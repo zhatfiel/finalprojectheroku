@@ -25,7 +25,8 @@ app.get('/budget', function(req, res) {
     // console.log("read file, turned to string, parsed to JSON");
     // var json = JSON.parse(fs.readFileSync('./budgetData.json').toString());
     // res.json(json);
-    //console.log("read data from mongodb");
+
+    //mongoose implementation of grabbing json data from mongodb collection
     console.log("fetching all data from myBudget collection");
     var budget = { "myBudget": []};
     mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true})
@@ -49,11 +50,10 @@ app.get('/budget', function(req, res) {
                 console.log(e);
                 mongoose.connection.close();
             })
-    //res.send(budget);
 });
 
 //insert new data to db/collection
-app.get('/add-data', function(req, res) {
+app.post('/add-data', function(req, res) {
     console.log("inserting new data to mongoDB");
     let newData = new myBudgetModel(req.body);
     mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true})
