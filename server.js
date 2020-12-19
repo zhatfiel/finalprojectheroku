@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const port = 80;
+const port = "https://zhatfiel-final-project.herokuapp.com/";
 var fs = require('fs');
 app.use(express.json())
 
@@ -79,5 +79,5 @@ app.post('/add-data', function(req, res) {
 });
 
 app.listen(port, () => {
-    console.log(`API served at http://localhost:${port}`);
+    console.log(`API served at ${port}`);
 });
