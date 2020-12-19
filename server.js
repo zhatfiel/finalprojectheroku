@@ -16,11 +16,24 @@ app.use(cors());
 
 app.use('/', express.static('public'));
 
-app.get('/login', function(req, res) {
-    var auth0 = new auth0.WebAuth({
-        domain: 'https://zhatfiel-final-project.herokuapp.com/',
-        clientID: 'WcMiRD38uQySAvwyu0pD05OyyY92RJ31'
-      });
+//auth0 config
+const { auth } = require('express-openid-connect');
+
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: 'ebd4849e4045477b337354046774d76cfafafa4674dc5396d2c9b9104f1decac',
+  baseURL: 'https://zhatfiel-final-project.herokuapp.com',
+  clientID: 'uSje3NiefVxgL1KWSWBMaTJdJR7xQA3U',
+  issuerBaseURL: 'https://broad-shape-4582.us.auth0.com'
+};
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
+// req.isAuthenticated is provided from the auth router
+app.get('/', (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 });
 
 //populate pie chart
