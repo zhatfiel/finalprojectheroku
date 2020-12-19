@@ -25,7 +25,8 @@ const config = {
   secret: 'ebd4849e4045477b337354046774d76cfafafa4674dc5396d2c9b9104f1decac',
   baseURL: 'https://zhatfiel-final-project.herokuapp.com',
   clientID: 'uSje3NiefVxgL1KWSWBMaTJdJR7xQA3U',
-  issuerBaseURL: 'https://broad-shape-4582.us.auth0.com'
+  issuerBaseURL: 'https://broad-shape-4582.us.auth0.com',
+  header: [["Access-Control-Allow-Origin", "https://zhatfiel-final-project.herokuapp.com"], ["Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"]]
 };
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
@@ -33,7 +34,7 @@ app.use(auth(config));
 
 // req.isAuthenticated is provided from the auth router
 app.get('/', (req, res, next) => {
-  req.header("Access-Control-Allow-Origin", "https://broad-shape-4582.us.auth0.com/authorize?client_id=uSje3NiefVxgL1KWSWBMaTJdJR7xQA3U&scope=openid%20profile%20email&response_type=id_token&redirect_uri=https%3A%2F%2Fzhatfiel-final-project.herokuapp.com%2Fcallback&response_mode=form_post&nonce=J2QlX6jiZWUdmyoCK7ztwQnpNzWJB-umcNACGgNpfyc&state=eyJyZXR1cm5UbyI6Imh0dHBzOi8vemhhdGZpZWwtZmluYWwtcHJvamVjdC5oZXJva3VhcHAuY29tIn0"); // update to match the domain you will make the request from
+  req.header("Access-Control-Allow-Origin", "https://zhatfiel-final-project.herokuapp.com"); // update to match the domain you will make the request from
   req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
   next();
