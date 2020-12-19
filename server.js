@@ -2,7 +2,7 @@
 
 const express = require('express');
 const app = express();
-const cors = require('cors');
+//const cors = require('cors');
 const port = process.env.PORT || 3000;
 var fs = require('fs');
 app.use(express.json())
@@ -12,7 +12,7 @@ const myBudgetModel = require('./models/myBudget_schema');
 const { DefaultDeserializer } = require('v8');
 const url = process.env.MONGODB_URI;
 
-app.use(cors());
+//app.use(cors());
 
 app.use('/', express.static('public'));
 
@@ -25,8 +25,7 @@ const config = {
   secret: 'ebd4849e4045477b337354046774d76cfafafa4674dc5396d2c9b9104f1decac',
   baseURL: 'https://zhatfiel-final-project.herokuapp.com',
   clientID: 'uSje3NiefVxgL1KWSWBMaTJdJR7xQA3U',
-  issuerBaseURL: 'https://broad-shape-4582.us.auth0.com',
-  header: [["Access-Control-Allow-Origin", "https://zhatfiel-final-project.herokuapp.com"], ["Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"]]
+  issuerBaseURL: 'https://broad-shape-4582.us.auth0.com'
 };
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
