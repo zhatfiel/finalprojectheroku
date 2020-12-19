@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-//const port = "https://zhatfiel-final-project.herokuapp.com/";
+const port = process.env.PORT || 3000;
 var fs = require('fs');
 app.use(express.json())
 
@@ -78,6 +78,6 @@ app.post('/add-data', function(req, res) {
     res.send('success');
 });
 
-// app.listen(port, () => {
-//     console.log(`API served at ${port}`);
-// });
+app.listen(port, () => {
+    console.log(`API served at ${port}`);
+});
