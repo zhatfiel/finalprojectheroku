@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const port = 4000;
+const port = 80;
 var fs = require('fs');
 app.use(express.json())
 
@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 const myBudgetModel = require('./models/myBudget_schema');
 const { DefaultDeserializer } = require('v8');
 //let url = 'mongodb://localhost:27017/mongodb_demo';
-let url = 'mongodb+srv://admin:admin@final.k3weo.mongodb.net/final-project?retryWrites=true&w=majority';
+let url = 'mongodb+srv://admin:admin@final.k3weo.mongodb.net/mongoDB?retryWrites=true&w=majority';
 
 app.use(cors());
 
@@ -29,7 +29,7 @@ app.get('/budget', function(req, res) {
 
     //mongoose implementation of grabbing json data from mongodb collection
     console.log("fetching all data from myBudget collection");
-    var budget = { "myBudget": []};
+    var budget = { "budget": []};
     mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true})
             .then(()=>{
                 myBudgetModel.find({})
@@ -37,7 +37,7 @@ app.get('/budget', function(req, res) {
                                     console.log("data length: " + data.length);
                                     for (var i = 0; i < data.length; i++){
                                         console.log(data[i]);
-                                        budget.myBudget[i] = data[i];
+                                        budget.budget[i] = data[i];
                                     }
                                     res.send(budget);
                                     mongoose.connection.close();
