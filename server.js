@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 const myBudgetModel = require('./models/myBudget_schema');
 const { DefaultDeserializer } = require('v8');
 //let url = 'mongodb://localhost:27017/mongodb_demo';
-let url = 'mongodb+srv://admin:admin@final.k3weo.mongodb.net/mongoDB?retryWrites=true&w=majority';
+const url = process.env.MONGODB_URI;
 
 app.use(cors());
 
