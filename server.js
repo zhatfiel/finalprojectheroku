@@ -10,7 +10,6 @@ app.use(express.json())
 const mongoose = require('mongoose');
 const myBudgetModel = require('./models/myBudget_schema');
 const { DefaultDeserializer } = require('v8');
-//let url = 'mongodb://localhost:27017/mongodb_demo';
 const url = process.env.MONGODB_URI;
 
 app.use(cors());
@@ -23,11 +22,8 @@ app.get('/hello', (req, res) => {
 
 //populate pie chart
 app.get('/budget', function(req, res) {
-    // console.log("read file, turned to string, parsed to JSON");
-    // var json = JSON.parse(fs.readFileSync('./budgetData.json').toString());
-    // res.json(json);
 
-    //mongoose implementation of grabbing json data from mongodb collection
+    //grabbing json data from mongodb cluster collection
     console.log("fetching all data from myBudget collection");
     var budget = { "budget": []};
     mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true})
