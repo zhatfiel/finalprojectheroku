@@ -39,6 +39,10 @@ app.get('/', (req, res, next) => {
   next();
 });
 
+app.route('/about', function(req, res) {
+    res.send('about!');
+});
+
 //populate pie chart
 app.get('/budget', function(req, res) {
 
