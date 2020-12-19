@@ -12,7 +12,7 @@ const myBudgetModel = require('./models/myBudget_schema');
 const { DefaultDeserializer } = require('v8');
 const url = process.env.MONGODB_URI;
 
-app.use(cors());
+// app.use(cors());
 
 app.use('/', express.static('public'));
 
