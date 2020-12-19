@@ -144,11 +144,13 @@
           budget: document.getElementById("budget").value,
           color: document.getElementById("color").value,
         };
-        axios.post("http://localhost:4000/add-data", data).then(function (res) {
-          document.getElementById("title").value = "";
-          document.getElementById("budget").value = "";
-          document.getElementById("color").value = "";
-        });
+        axios
+          .post("https://zhatfiel-final-project.herokuapp.com/add-data", data)
+          .then(function (res) {
+            document.getElementById("title").value = "";
+            document.getElementById("budget").value = "";
+            document.getElementById("color").value = "";
+          });
       }
     </script>
   </body>
