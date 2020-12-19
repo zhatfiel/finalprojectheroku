@@ -12,7 +12,7 @@ const myBudgetModel = require('./models/myBudget_schema');
 const { DefaultDeserializer } = require('v8');
 const url = process.env.MONGODB_URI;
 
-// app.use(cors());
+app.use(cors());
 
 app.use('/', express.static('public'));
 
@@ -32,8 +32,8 @@ const config = {
 app.use(auth(config));
 
 // req.isAuthenticated is provided from the auth router
-app.get('/login', (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://zhatfiel-final-project.herokuapp.com"); // update to match the domain you will make the request from
+app.get('/', (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
   next();
