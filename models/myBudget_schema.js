@@ -15,6 +15,6 @@ const myBudgetSchema = new mongoose.Schema({
         required: true,
         maxLength: 6
     }
-}, {collection: 'myBudget'});
+}, {collection: 'budget'});
 
-module.exports = mongoose.model('myBudget', myBudgetSchema);
+module.exports = mongoose.model('budget', myBudgetSchema);
