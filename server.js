@@ -10,7 +10,8 @@ app.use(express.json())
 const mongoose = require('mongoose');
 const myBudgetModel = require('./models/myBudget_schema');
 const { DefaultDeserializer } = require('v8');
-let url = 'mongodb://localhost:27017/mongodb_demo';
+//let url = 'mongodb://localhost:27017/mongodb_demo';
+let url = 'mongodb+srv://admin:admin@final.k3weo.mongodb.net/final-project?retryWrites=true&w=majority';
 
 app.use(cors());
 
