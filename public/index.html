@@ -123,16 +123,18 @@
       }
 
       function getBudget() {
-        axios.get("/budget").then(function (res) {
-          console.log(res.data);
-          for (var i = 0; i < res.data.budget.length; i++) {
-            dataSource.datasets[0].data[i] = res.data.budget[i].budget;
-            dataSource.labels[i] = res.data.budget[i].title;
-            dataSource.datasets[0].backgroundColor[i] =
-              res.data.budget[i].color;
-          }
-          createChart();
-        });
+        axios
+          .get("https://zhatfiel-final-project.herokuapp.com/budget")
+          .then(function (res) {
+            console.log(res.data);
+            for (var i = 0; i < res.data.budget.length; i++) {
+              dataSource.datasets[0].data[i] = res.data.budget[i].budget;
+              dataSource.labels[i] = res.data.budget[i].title;
+              dataSource.datasets[0].backgroundColor[i] =
+                res.data.budget[i].color;
+            }
+            createChart();
+          });
       }
       getBudget();
 
