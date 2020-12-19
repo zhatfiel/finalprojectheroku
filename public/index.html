@@ -125,11 +125,11 @@
       function getBudget() {
         axios.get("http://localhost:4000/budget").then(function (res) {
           console.log(res.data);
-          for (var i = 0; i < res.data.myBudget.length; i++) {
-            dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
-            dataSource.labels[i] = res.data.myBudget[i].title;
+          for (var i = 0; i < res.data.budget.length; i++) {
+            dataSource.datasets[0].data[i] = res.data.budget[i].budget;
+            dataSource.labels[i] = res.data.budget[i].title;
             dataSource.datasets[0].backgroundColor[i] =
-              res.data.myBudget[i].color;
+              res.data.budget[i].color;
           }
           createChart();
         });
