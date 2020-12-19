@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/zhatfiel/personal-budget#readme",
   "dependencies": {
+    "auth0-lock": "^11.27.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.10.11",
