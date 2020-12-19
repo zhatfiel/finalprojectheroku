@@ -33,7 +33,7 @@ app.use(auth(config));
 
 // req.isAuthenticated is provided from the auth router
 app.get('/', (req, res, next) => {
-  req.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  req.header("Access-Control-Allow-Origin", "https://broad-shape-4582.us.auth0.com/*"); // update to match the domain you will make the request from
   req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
   next();
