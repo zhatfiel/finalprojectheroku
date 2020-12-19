@@ -32,11 +32,14 @@ const config = {
 app.use(auth(config));
 
 // req.isAuthenticated is provided from the auth router
-app.get('/', (req, res, next) => {
-  req.header("Access-Control-Allow-Origin", "https://zhatfiel-final-project.herokuapp.com"); // update to match the domain you will make the request from
-  req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-  next();
+// app.get('/', (req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "https://zhatfiel-final-project.herokuapp.com"); // update to match the domain you will make the request from
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+//   next();
+// });
+app.get('/', (req, res) => {
+    res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 });
 
 app.route('/about', function(req, res) {
